@@ -9,9 +9,9 @@ namespace WebApp_HomeWork.Models
     {
         public string category { get; set; }
 
-        public string money { get; set; }
+        public decimal money { get; set; }
 
-        public string date { get; set; }
+        public DateTime date { get; set; }
 
         public string description { get; set; }
     }

@@ -34,22 +34,22 @@ namespace WebApp_HomeWork.Controllers
             model.Add(new MoneyClass
             {
                 category = "支出",
-                money = "6600",
-                date = "2017-03-05",
+                money = 6600,
+                date = DateTime.Now,
                 description = "旅遊"
             });
             model.Add(new MoneyClass
             {
                 category = "收入",
-                money = "66000",
-                date = "2017-03-05",
+                money = 66000,
+                date = DateTime.Now,
                 description = "薪資"
             });
             model.Add(new MoneyClass
             {
                 category = "支出",
-                money = "600",
-                date = "2017-03-05",
+                money = 600,
+                date = DateTime.Now,
                 description = "交通"
             });
             return View(model);

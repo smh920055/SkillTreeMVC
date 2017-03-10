@@ -1,15 +1,20 @@
-﻿@{
+﻿@model List<WebApp_HomeWork.Models.MoneyClass>
+@{
     Layout = null;
 }
-@model List<WebApp_HomeWork.Models.MoneyClass>
-@for (int i = 0; i < Model.Count; i++)
-{
+
+@{
+    int count = 0;
+    foreach (WebApp_HomeWork.Models.MoneyClass oMoney in Model)
+    {
+        count += 1;
     <tr>
-        <th>@(i + 1)</th>
-        <th>@Model[i].category</th>
-        <th>@Model[i].date</th>
-        <th>@Model[i].money</th>
-        <th>@Model[i].description</th>
+        <td>@count.ToString()</td>
+        <td>@oMoney.category </td >
+        <td>@Convert.ToDateTime(oMoney.date).ToString("yyyy-MM-dd")</td>
+        <td>@Convert.ToString(oMoney.money)</td>
+        <td>@oMoney.description </td >
     </tr>
+    }
 }
 
