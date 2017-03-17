@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<WebApp_HomeWork.Models.MoneyClass>
+
 @{
     ViewBag.Title = "Index";
 }
@@ -53,7 +54,31 @@
                 <th>金額</th>
                 <th>備註</th>
             </tr>
-            @Html.Action("MoneyList")
+@{
+    int i = 0;
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @(++i)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.money)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+        </tr>
+    }
+
+}
+
         </table>
     </div>
 </div>

@@ -4,16 +4,25 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApp_HomeWork.Models;
+using WebApp_HomeWork.Service;
+using WebApp_HomeWork.Repositories;
 
 namespace WebApp_HomeWork.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly MoneyService _MoneyService;
+
+        public HomeController()
+        {
+            var unitOfWork = new EFUnitOfWork();
+            _MoneyService = new MoneyService(unitOfWork);
+        }
         public ActionResult Index()
         {
-            return View();
+            return View(_MoneyService.Lookup());
         }
-
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
