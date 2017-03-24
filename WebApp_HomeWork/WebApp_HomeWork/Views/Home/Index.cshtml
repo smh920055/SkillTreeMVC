@@ -1,16 +1,9 @@
 ﻿@model IEnumerable<WebApp_HomeWork.Models.MoneyClass>
+@using WebApp_HomeWork.Helper
 
 @{
     ViewBag.Title = "Index";
 }
-<style>
-    .Blue {
-        color:blue;
-    }
-    .Red {
-        color:red;
-    }
-</style>
 <h2>Index</h2>
 <div class="well">
     @Html.Action("MoneyInput")
@@ -29,7 +22,7 @@
                 int i = 0;
                 foreach (var item in Model)
                 {
-                    <tr class="@((int)item.category == 0 ? "Blue" : "Red")">
+                    <tr style="color:@Html.ShowCategoryColor(item.category)" >
                         <td>
                             @(++i)
                         </td>
