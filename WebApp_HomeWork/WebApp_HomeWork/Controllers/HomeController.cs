@@ -22,7 +22,25 @@ namespace WebApp_HomeWork.Controllers
         {
             return View(_MoneyService.Lookup());
         }
-        
+
+        public ActionResult MoneyInput()
+        {
+            var input = new MoneyClass();
+            return PartialView(input);
+        }
+
+        [HttpPost]
+        public ActionResult MoneyInput(MoneyClass Input)
+        {
+            if (ModelState.IsValid)
+            {
+                _MoneyService.Add(Input);
+                _MoneyService.Save();
+                return View();
+            }
+            return View(Input);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -42,21 +60,21 @@ namespace WebApp_HomeWork.Controllers
             List<MoneyClass> model = new List<MoneyClass>();
             model.Add(new MoneyClass
             {
-                category = "支出",
+                category = CategoryType.支出,
                 money = 6600,
                 date = DateTime.Now,
                 description = "旅遊"
             });
             model.Add(new MoneyClass
             {
-                category = "收入",
+                category = CategoryType.收入,
                 money = 66000,
                 date = DateTime.Now,
                 description = "薪資"
             });
             model.Add(new MoneyClass
             {
-                category = "支出",
+                category = CategoryType.支出,
                 money = 600,
                 date = DateTime.Now,
                 description = "交通"

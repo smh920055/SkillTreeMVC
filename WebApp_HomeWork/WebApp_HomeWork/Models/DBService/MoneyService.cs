@@ -22,7 +22,7 @@ namespace WebApp_HomeWork.Service
             var source = _accountBookRep.LookupAll();
             var result = source.Select(s => new MoneyClass()
             {
-                category = s.Categoryyy == 0 ? "收入" : "支出",
+                category = (CategoryType)s.Categoryyy,
                 money = s.Amounttt,
                 date = s.Dateee,
                 description = s.Remarkkk
@@ -36,7 +36,7 @@ namespace WebApp_HomeWork.Service
             var account = new AccountBook()
             {
                 Id = Guid.NewGuid(),
-                Categoryyy = money.category == "收入" ? 0 : 1,
+                Categoryyy = (int)money.category,
                 Dateee = money.date,
                 Amounttt = Convert.ToInt32(money.money),
                 Remarkkk = money.description
